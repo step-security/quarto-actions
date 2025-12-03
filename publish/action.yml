@@ -73,7 +73,6 @@ runs:
         git config --global user.email "${{ inputs.GITHUB_EMAIL }}"
         git config --global user.name "${{ inputs.GITHUB_USERNAME }}"
         # Propagate git credentials to worktrees (required for actions/checkout@v6)
-        # See: https://github.com/quarto-dev/quarto-actions/issues/133
         if git config get includeIf.gitdir:"$(git rev-parse --path-format=absolute --git-dir)".path &>/dev/null; then
           GIT_DIR=$(git rev-parse --path-format=absolute --git-dir)
           CRED_PATH=$(git config get --path includeIf.gitdir:"${GIT_DIR}".path)
